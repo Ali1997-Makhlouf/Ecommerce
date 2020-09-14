@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Category>
+
+ <div class="col-md-10 p0">
+        <div class="collapse navbar-collapse" id="min_navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="dropdown submenu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop</a>
+                    <ul class="dropdown-menu other_dropdwn">
+                        @if (Model != null && Model.Count() >0)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                if (item.ParentId == null)
+                                {
+                                    <li><a href="about.html">@item.Category_Name</a></li>
+                                }
+                            }
+                        }
+                        @if (Model == null || Model.Count() == 0)
+                        {
+                            <li><a href="#">Coming Soon</a></li>
+                        }
+                    </ul>
+                </li>
+                <li class="dropdown submenu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us</a>
+                    <ul class="dropdown-menu other_dropdwn">
+                        <li><a asp-controller="Home" asp-action="Product">Product</a></li>
+                        <li><a href="services-2.html">Services-2</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- /.navbar-collapse -->
+    </div>
+
